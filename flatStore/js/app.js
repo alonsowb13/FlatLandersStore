@@ -20,6 +20,10 @@
 				full: 'public/img/gem-01.gif',
 				thumb: 'public/img/gem-04.gif'
 			}
+		],
+		reviews: [
+			{stars: 5, body:'I love this product', author: 'alonso@gmail.com'},
+			{stars: 5, body:'I love this product', author: 'alonso@gmail.com'}
 		]
 	},
 	{
@@ -31,6 +35,10 @@
 				full: 'public/img/gem-02.gif',
 				thumb: 'public/img/gem-05.gif'
 			}
+		],
+		reviews: [
+			{stars: 5, body:'I love this product', author: 'alonso@gmail.com'},
+			{stars: 5, body:'I love this product', author: 'alonso@gmail.com'}
 		]
 	},
 	{
@@ -42,6 +50,10 @@
 				full: 'public/img/gem-03.gif',
 				thumb: 'public/img/gem-06.gif'
 			}
+		],
+		reviews: [
+			{stars: 5, body:'I love this product', author: 'alonso@gmail.com'},
+			{stars: 5, body:'I love this product', author: 'alonso@gmail.com'}
 		]
 	}
 	];
@@ -61,5 +73,14 @@
 			return this.tab === checkTab;
 		};
 	});
+
+	app.controller('ReviewController', function(){
+		this.review = {};
+
+		this.addReview = function(product){
+			product.reviews.push(this.review);
+			this.review = {};
+		}
+	})
 
 })();

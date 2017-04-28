@@ -38,7 +38,7 @@
 			 	</div>
 			 	<div class="panel" ng-show="panel.isSelected(3)">
 			 		<h4>Reviews</h4>
-			 		<form name="reviewForm" class="form-horizontal">
+			 		<form name="reviewForm" class="form-horizontal" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
 				 		<blockquote ng-repeat="review in product.reviews">
 				 			<b>Stars: {{review.stars}}</b>
 				 			{{review.body}}
@@ -46,7 +46,7 @@
 				 		</blockquote>
 				 		<div class="form-group">
 				 			<label>Stars: </label>
-				 			<select class="form-control" ng-model="review.stars">
+				 			<select class="form-control" ng-model="reviewCtrl.review.stars" required>
 				 				<option value="1">1 star</option>
 				 				<option value="2">2 stars</option>
 				 				<option value="3">3 stars</option>
@@ -56,12 +56,13 @@
 				 		</div>
 				 		<div class="form-group">
 				 		<label>Comments: </label>
-				 			<textarea class="form-control" ng-model="review.body" placeholder="please add your shit :D" name="" id="" cols="30" rows="10"></textarea>
+				 			<textarea class="form-control" ng-model="reviewCtrl.review.body" placeholder="please add your shit :D" name="" id="" cols="30" rows="10" required></textarea>
 				 		</div>
 				 		<div class="form-group">
 				 			<label>by:</label>
-			 				<input placeholder="somebody@something.com" class="form-control" type="email" ng-model="review.author"/>
+			 				<input placeholder="somebody@something.com" class="form-control" type="email" ng-model="reviewCtrl.review.author" required />
 				 		</div>	
+				 		<div> reviewForm is {{reviewForm.$valid}}</div>
 			 			<input type="submit" value="Submit" class="btn btn-primary" />
 			 		</form>
 			 	</div>
